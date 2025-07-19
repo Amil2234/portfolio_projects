@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amil Bashirov | Cybersecurity Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #eee;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #eee;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #bbb;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: #111;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      border-bottom: 1px solid #222;
+      z-index: 100;
+    }
+    header h1 {
+      font-weight: 600;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+    nav a {
+      margin-left: 2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: none;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #eee;
+      left: 0;
+      bottom: -6px;
+      transition: 0.3s ease;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 6rem auto 4rem;
+      padding: 0 2rem;
+    }
+    section {
+      margin-bottom: 5rem;
+    }
+    h2 {
+      font-weight: 600;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #eee;
+      padding-left: 1rem;
+      letter-spacing: 1.2px;
+      user-select: none;
+    }
+    p {
+      max-width: 650px;
+      color: #ccc;
+      font-size: 1.05rem;
+      user-select: text;
+      margin-bottom: 1.5rem;
+    }
+
+    #hero {
+      text-align: center;
+      margin-bottom: 6rem;
+    }
+    #hero h1 {
+      font-size: 3.4rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: #eee;
+      user-select: none;
+    }
+    #hero p {
+      font-size: 1.3rem;
+      color: #bbb;
+      margin-top: 1rem;
+      margin-bottom: 3rem;
+      user-select: text;
+    }
+    .btn-primary {
+      background: #eee;
+      color: #000;
+      font-weight: 700;
+      padding: 1rem 3rem;
+      font-size: 1.2rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 6px 10px rgba(255 255 255 / 0.2);
+      transition: background 0.3s ease, transform 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      user-select: none;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #ddd;
+      transform: scale(1.05);
+    }
+    .btn-primary svg {
+      margin-left: 0.8rem;
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: #000;
+      stroke-width: 2;
+      transition: transform 0.3s ease;
+    }
+    .btn-primary:hover svg {
+      transform: translateX(6px);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background: #111;
+      border-radius: 12px;
+      padding: 1.8rem;
+      box-shadow: 0 0 10px rgba(255 255 255 / 0.05);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .project-card:hover {
+      box-shadow: 0 0 20px #eee;
+      transform: translateY(-6px);
+    }
+    .project-card h3 {
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #eee;
+    }
+    .project-card p {
+      font-size: 1rem;
+      color: #bbb;
+      user-select: text;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .skill-item {
+      padding: 1rem 0.8rem;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: default;
+      user-select: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .skill-item:hover {
+      background: #eee;
+      color: #000;
+    }
+
+    .awards-list {
+      list-style: none;
+      max-width: 650px;
+      margin-top: 1rem;
+    }
+    .award-item {
+      display: flex;
+      align-items: center;
+      background: #111;
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      user-select: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .award-item:hover {
+      background: #eee;
+      color: #000;
+      box-shadow: 0 0 12px #eee;
+    }
+    .award-icon {
+      font-size: 1.8rem;
+      margin-right: 1rem;
+      user-select: none;
+    }
+    .award-text {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .award-desc {
+      color: #777;
+      font-size: 0.9rem;
+      margin-left: auto;
+      user-select: text;
+    }
+
+    #about p, #contact p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 400;
+      color: #ddd;
+      line-height: 1.5;
+      user-select: text;
+    }
+    #contact a {
+      display: inline-block;
+      margin: 0.8rem 1.2rem;
+      font-weight: 600;
+      font-size: 1rem;
+      user-select: text;
+    }
+    #contact a:hover {
+      color: #bbb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #444;
+      border-top: 1px solid #222;
+      user-select: none;
+    }
+
+    @media (max-width: 640px) {
+      main {
+        margin: 4rem 1rem 3rem;
+        padding: 0 1rem;
+      }
+      header {
+        padding: 1rem 1.5rem;
+      }
+      nav a {
+        margin-left: 1.2rem;
+        font-size: 0.9rem;
+      }
+      #hero h1 {
+        font-size: 2.4rem;
+      }
+      #hero p {
+        font-size: 1.1rem;
+      }
+      .btn-primary {
+        padding: 0.9rem 2.4rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Amil Bashirov</h1>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#awards">Awards</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="hero" aria-label="Introduction">
+    <h1>Hi, I'm Amil — Cybersecurity Enthusiast</h1>
+    <p>Passionate about securing digital worlds with code, knowledge, and ethics.</p>
+    <a href="https://github.com/Amil2234" target="_blank" rel="noopener noreferrer" class="btn-primary" aria-label="View Projects on GitHub">
+      View Projects
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <section id="projects" aria-label="Projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card" tabindex="0">
+        <h3>Password Cracker (Demo)</h3>
+        <p>Python script demonstrating brute-force password cracking techniques for learning purposes.</p>
+        <a href="#" class="btn-primary" style="margin-top:1rem;">Open Project</a>
+        
+      </div>
+      <div class="project-card" tabindex="0">
+        <h3>Firewall Configuration</h3>
+        <p>Set up basic firewall rules on Linux servers to protect from unauthorized access.</p>
+        <a href="#" class="btn-primary" style="margin-top:1rem;">Open Project</a>
+      </div>
+      <div class="project-card" tabindex="0">
+        <h3>CTF Challenge Write-ups</h3>
+        <p>Documented solutions and strategies for Capture The Flag cybersecurity competitions.</p>
+        <a href="#" class="btn-primary" style="margin-top:1rem;">Open Project</a>
+      </div>
+      <div class="project-card" tabindex="0">
+        <h3>Web Vulnerability Tests</h3>
+        <p>Explored and mitigated common web vulnerabilities like XSS and SQL Injection.</p>
+        <a href="#" class="btn-primary" style="margin-top:1rem;">Open Project</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" aria-label="Skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-item" tabindex="0">Python</div>
+      <div class="skill-item" tabindex="0">Linux Administration</div>
+      <div class="skill-item" tabindex="0">Networking Protocols</div>
+      <div class="skill-item" tabindex="0">Ethical Hacking</div>
+      <div class="skill-item" tabindex="0">HTML & CSS</div>
+      <div class="skill-item" tabindex="0">JavaScript</div>
+      <div class="skill-item" tabindex="0">Firewall Setup</div>
+      <div class="skill-item" tabindex="0">CTF Competitions</div>
+    </div>
+  </section>
+
+  <section id="awards" aria-label="Awards and Achievements">
+    <h2>Awards & Achievements</h2>
+    <ul class="awards-list">
+      <li class="award-item" tabindex="0">
+        <span class="award-icon" aria-hidden="true">🎖️</span>
+        <div class="award-text">1st Place - English Kings National Azerbaijan Respublic Olimpiad(2024-2025)</div>
+        <div class="award-desc">Competed among 50+ participants and secured first place.</div>
+      </li>
+      <li class="award-item" tabindex="0">
+        <span class="award-icon" aria-hidden="true">📜</span>
+        <div class="award-text">Second Place Sertificate IT 4st Place In Azerbaijan</div>
+      </li>
+      <li class="award-item" tabindex="0">
+        <span class="award-icon" aria-hidden="true">🎖️</span>
+        <div class="award-text">English World Olimpiad Between 6 Countries - Second place (2025-2026)</div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="about" aria-label="About Me">
+    <h2>About Me</h2>
+    <p>
+      I’m <strong>Amil Bashirov</strong>, a 15-year-old cybersecurity enthusiast from Azerbaijan.<br />
+      My passion is protecting digital infrastructures and learning the art of ethical hacking.<br />
+      I focus on Python scripting, Linux security, networking protocols, and practical cybersecurity challenges.<br />
+      I’m open to collaboration and eager to grow in this exciting field.<br /><br />
+      Feel free to reach out anytime.
+    </p>
+  </section>
+
+  <section id="contact" aria-label="Contact Information" style="text-align:center;">
+    <h2>Contact</h2>
+    <p>
+      Email: <a href="mailto:bashirovamil4334@gmail.com" rel="noopener noreferrer">bashirovamil4334@gmail.com</a><br />
+      Phone: <a href="tel:+994503338511">+994 50 333 8511</a><br />
+      LinkedIn: <a href="https://www.linkedin.com/in/amil-bashirov-68b11335a" target="_blank" rel="noopener noreferrer">amil-bashirov-68b11335a</a><br />
+      GitHub: <a href="https://github.com/Amil2234" target="_blank" rel="noopener noreferrer">github.com/Amil2234</a>
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2025 Amil Bashirov. All rights reserved.
+</footer>
+
+</body>
+</html>
